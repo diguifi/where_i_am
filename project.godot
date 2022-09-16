@@ -24,6 +24,11 @@ config/name="Where I am"
 run/main_scene="res://Levels/Main/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+TriggerManager="*res://TriggerSystem/TriggerManager.gd"
+Signals="*res://Signals.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
