@@ -10,8 +10,8 @@ size = Vector3( 40, 12, 1 )
 extents = Vector3( 20, 6, 0.5 )
 
 [node name="Wall" type="MeshInstance"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
 

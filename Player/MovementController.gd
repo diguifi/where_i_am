@@ -14,14 +14,17 @@ var snap := Vector3()
 var up_direction := Vector3.UP
 var stop_on_slope := true
 onready var floor_max_angle: float = deg2rad(45.0)
-onready var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity") 
-		* gravity_multiplier)
+onready var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity") * gravity_multiplier)
 
-func _physics_process(delta) -> void:
+func _physics_process(delta):
+	check_movement_inputs(delta)
+	
+
+func check_movement_inputs(delta):
 	input_axis = Input.get_vector("move_back", "move_forward",
 			"move_left", "move_right")
 	
-	direction_input()
+	check_direction_inputs()
 	
 	if is_on_floor():
 		snap = -get_floor_normal() - get_floor_velocity() * delta
@@ -45,7 +48,7 @@ func _physics_process(delta) -> void:
 	velocity = move_and_slide_with_snap(velocity, snap, up_direction, 
 			stop_on_slope, 4, floor_max_angle)
 
-func direction_input() -> void:
+func check_direction_inputs():
 	direction = Vector3()
 	var aim: Basis = get_global_transform().basis
 	if input_axis.x >= 0.5:
@@ -59,7 +62,7 @@ func direction_input() -> void:
 	direction.y = 0
 	direction = direction.normalized()
 
-func accelerate(delta: float) -> void:
+func accelerate(delta: float):
 	var temp_vel := velocity
 	temp_vel.y = 0
 	
