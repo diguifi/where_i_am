@@ -1,11 +1,8 @@
 extends Spatial
 
-export var fast_close := true
-
-
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	set_process_input(fast_close)
+	set_process_input(true)
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):

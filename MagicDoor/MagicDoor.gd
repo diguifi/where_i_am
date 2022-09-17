@@ -5,6 +5,9 @@ onready var animation = get_parent().get_node("AnimationPlayer")
 var can_open := false
 var opened = false
 
+func _ready():
+	Signals.connect("final_place_reached", self, "_final_place_reached")
+
 func _input(event: InputEvent):
 	if event.is_action_pressed("action") and can_open and !animation.is_playing():
 		if !opened:
@@ -21,3 +24,8 @@ func _process(delta):
 		can_open = true
 	else:
 		can_open = false
+		
+func _final_place_reached():
+	if opened:
+		animation.play("door_close")
+		opened = false
