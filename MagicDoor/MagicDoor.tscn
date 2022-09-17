@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Levels/Main/Materials/M_Dark.tres" type="Material" id=1]
+[ext_resource path="res://MagicDoor/MagicCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MagicDoor/Portal.gd" type="Script" id=3]
+[ext_resource path="res://MagicDoor/MagicDoor.gd" type="Script" id=4]
+
+[sub_resource type="ViewportTexture" id=5]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="CubeMesh" id=2]
+material = ExtResource( 1 )
+size = Vector3( 1.5, 3, 0.1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.75, 1.5, 0.075 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "door_close"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -110, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "door_open"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -110, 0 ) ]
+}
+
+[sub_resource type="BoxShape" id=9]
+
+[node name="MagicDoor" type="Spatial"]
+
+[node name="Viewport" parent="." instance=ExtResource( 2 )]
+
+[node name="Portal" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
+texture = SubResource( 5 )
+script = ExtResource( 3 )
+
+[node name="DoorAnchor" type="Spatial" parent="Portal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0 )
+
+[node name="MagicDoorMesh" type="MeshInstance" parent="Portal/DoorAnchor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+script = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="Portal/DoorAnchor/MagicDoorMesh"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portal/DoorAnchor/MagicDoorMesh/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Portal/DoorAnchor"]
+anims/RESET = SubResource( 6 )
+anims/door_close = SubResource( 8 )
+anims/door_open = SubResource( 7 )
+
+[node name="Area" type="Area" parent="Portal"]
+transform = Transform( 0.6, 0, 0, 0, 1.4, 0, 0, 0, 0.01, 0, 0, -0.099592 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Portal/Area"]
+shape = SubResource( 9 )
+
+[connection signal="body_entered" from="Portal/Area" to="Portal" method="_on_Area_body_entered"]
