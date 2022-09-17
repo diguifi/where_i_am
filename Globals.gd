@@ -1,7 +1,8 @@
 extends Node
 
-enum event { GENERIC, PLACE }
+enum event { MUSIC, PLACE }
 enum place { NONE, PLACE1, PLACE2 }
 
 func _ready():
-	print('oi')
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear2db(0.1))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), linear2db(0.5))

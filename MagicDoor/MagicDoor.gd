@@ -17,7 +17,7 @@ func _input(event: InputEvent):
 			animation.play("door_close")
 			opened = false
 
-func _process(delta):
+func _process(_delta):
 	var camera_pos = camera.global_transform.origin
 	var door_pos = global_transform.origin
 	if door_pos.distance_to(camera_pos) <= 2.5:

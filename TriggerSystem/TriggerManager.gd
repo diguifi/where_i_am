@@ -7,19 +7,21 @@ var already_wrong = false
 func _ready():
 	Signals.connect("trigger_event", self, "_trigger_received")
 
-func _trigger_received(event, place):
+func _trigger_received(event, place, music):
 	match (event):
-		Globals.event.GENERIC:
-			print('musikinha')
+		Globals.event.MUSIC:
+			MusicManager.change_music(music)
 		Globals.event.PLACE:
 			if is_in_correct_order(place) and !already_wrong:
 				if is_final_place(place):
 					Signals.emit_signal("final_place_reached")
-					print('go to the door')
+					MusicManager.play_correct_effect()
+					MusicManager.change_music('FinishMusic')
 				else:
-					print('yes')
+					Signals.emit_signal("clear_triggers_of_place", place)
+					MusicManager.play_correct_effect()
 			else:
-				print('no')
+				MusicManager.play_wrong_effect()
 				already_wrong = true
 
 func is_in_correct_order(place):

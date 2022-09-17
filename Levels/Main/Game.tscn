@@ -19,8 +19,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.2891 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 95 )
 
 [node name="Trigger" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 71.3853 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 85.7995 )
 trigger_place = 0
+music = "DefaultMusic"
 
 [node name="Trigger2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.6884, 1.5, 46.6491 )
