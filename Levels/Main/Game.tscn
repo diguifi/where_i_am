@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Main/Geometry/TinyWall.tscn" type="PackedScene" id=2]
@@ -8,12 +8,17 @@
 [ext_resource path="res://Levels/Main/Environment.tres" type="Environment" id=6]
 [ext_resource path="res://TriggerSystem/Trigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://MagicDoor/MagicDoor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Main/Props/TinyWoods.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Main/Props/house1.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 5 )
 
 [node name="MagicDoor" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.2891 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.65685 )
+
+[node name="house1" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60658 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 95 )
@@ -32,12 +37,40 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.1245,
 trigger_event = 1
 trigger_place = 2
 
+[node name="Woods" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2596, 0, 88.3386 )
+
+[node name="Woods2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.999923, 0, -0.012374, 0, 1, 0, 0.012374, 0, 0.999923, -15.1289, 0, 66.3775 )
+
+[node name="Woods9" parent="." instance=ExtResource( 9 )]
+transform = Transform( -0.998986, 0, 0.0450141, 0, 1, 0, -0.0450141, 0, -0.998986, 16.5278, 0, 63.5236 )
+
+[node name="Woods3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.46759, 0, -0.883945, 0, 1, 0, 0.883945, 0, 0.46759, -32.6855, 0, 56.368 )
+
+[node name="Woods4" parent="." instance=ExtResource( 9 )]
+transform = Transform( -0.41839, 0, -0.908267, 0, 1, 0, 0.908267, 0, -0.41839, -38.687, 0, 80.9119 )
+
+[node name="Woods6" parent="." instance=ExtResource( 9 )]
+transform = Transform( -0.99998, 0, -0.00624827, 0, 1, 0, 0.00624827, 0, -0.99998, 23.0213, 0, 66.5665 )
+
+[node name="Woods7" parent="." instance=ExtResource( 9 )]
+transform = Transform( -0.473104, 0, 0.881006, 0, 1, 0, -0.881006, 0, -0.473104, 23.1585, 0, 88.5272 )
+
+[node name="Woods8" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.412707, 0, 0.910864, 0, 1, 0, -0.910864, 0, 0.412707, 42.0205, 0, 73.8592 )
+
+[node name="Woods5" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.828207, 0, -0.560422, 0, 1, 0, 0.560422, 0, 0.828207, -52.7947, 0, 45.2411 )
+
 [node name="ArenaGeometry" type="Spatial" parent="."]
 
 [node name="Floor1" parent="ArenaGeometry" instance=ExtResource( 4 )]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 20 )
 
 [node name="InvisibleWalls" type="Spatial" parent="ArenaGeometry"]
+visible = false
 
 [node name="Wall1" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 3 )]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -60 )

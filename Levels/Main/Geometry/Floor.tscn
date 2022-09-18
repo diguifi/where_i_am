@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Levels/Main/Materials/M_Dark.tres" type="Material" id=1]
+[ext_resource path="res://Levels/Main/Materials/Grass.tres" type="Material" id=1]
 
 [sub_resource type="CubeMesh" id=1]
 material = ExtResource( 1 )
@@ -11,7 +11,6 @@ extents = Vector3( 20, 0.25, 20 )
 
 [node name="Floor" type="MeshInstance"]
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
