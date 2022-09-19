@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Car_Acceleration_2.ogg-5747824934ab9e758068fa7a32d83
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
