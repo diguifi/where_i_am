@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Main/Geometry/TinyWall.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Levels/Main/Props/Car.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Main/Props/Slide.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/Main/Props/Chair.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/Main/Props/Cart.tscn" type="PackedScene" id=15]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 5 )
@@ -26,6 +27,9 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 43.4282, 0.05, 0 )
 
 [node name="Slide" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8297, 0, 0 )
+
+[node name="Cart" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8257, 0, 0 )
 
 [node name="MagicDoor" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.6057 )

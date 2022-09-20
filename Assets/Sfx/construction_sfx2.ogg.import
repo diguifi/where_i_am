@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/construction_sfx2.ogg-adb7d750389c238b51d9356c67eed4cb.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sfx/construction_sfx2.ogg"
+dest_files=[ "res://.import/construction_sfx2.ogg-adb7d750389c238b51d9356c67eed4cb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
