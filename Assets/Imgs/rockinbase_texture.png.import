@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/aspahlt.jpg-3d0e45cf86a31479d2d97746031f0489.s3tc.stex"
-path.etc2="res://.import/aspahlt.jpg-3d0e45cf86a31479d2d97746031f0489.etc2.stex"
+path.s3tc="res://.import/rockinbase_texture.png-4e629882aaf1660e21018e6955dccc9e.s3tc.stex"
+path.etc2="res://.import/rockinbase_texture.png-4e629882aaf1660e21018e6955dccc9e.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Imgs/aspahlt.jpg"
-dest_files=[ "res://.import/aspahlt.jpg-3d0e45cf86a31479d2d97746031f0489.s3tc.stex", "res://.import/aspahlt.jpg-3d0e45cf86a31479d2d97746031f0489.etc2.stex" ]
+source_file="res://Assets/Imgs/rockinbase_texture.png"
+dest_files=[ "res://.import/rockinbase_texture.png-4e629882aaf1660e21018e6955dccc9e.s3tc.stex", "res://.import/rockinbase_texture.png-4e629882aaf1660e21018e6955dccc9e.etc2.stex" ]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=false
+flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2

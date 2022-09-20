@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rockinchair.ogg-5ee658d56174334b3fe59285cb1ecb7e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sfx/rockinchair.ogg"
+dest_files=[ "res://.import/rockinchair.ogg-5ee658d56174334b3fe59285cb1ecb7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
