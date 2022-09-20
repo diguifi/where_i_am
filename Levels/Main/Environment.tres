@@ -15,6 +15,7 @@ background_mode = 2
 background_sky = SubResource( 5 )
 background_energy = 0.5
 ambient_light_sky_contribution = 0.8
+fog_enabled = true
 fog_color = Color( 0.360784, 0.419608, 0.486275, 1 )
 fog_depth_begin = 5.0
 fog_depth_end = 30.0

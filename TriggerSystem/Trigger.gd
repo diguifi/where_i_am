@@ -2,7 +2,7 @@ extends MeshInstance
 
 onready var area = $Area/CollisionShape
 export(Globals.event) var trigger_event = Globals.event.MUSIC
-export(Globals.place) var trigger_place = Globals.place.PLACE1
+export(Globals.place) var trigger_place = Globals.place.NONE
 export var music = ""
 
 func _ready():
@@ -15,4 +15,3 @@ func _check_clear_trigger(arg):
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
 		Signals.emit_signal("trigger_event", trigger_event, trigger_place, music)
-		queue_free()

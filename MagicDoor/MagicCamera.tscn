@@ -5,4 +5,6 @@ size = Vector2( 130, 300 )
 render_target_v_flip = true
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.575, 95 )
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 110 )
+fov = 95.0
+far = 45.0

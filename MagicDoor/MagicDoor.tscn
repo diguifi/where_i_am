@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/Main/Materials/Wood.tres" type="Material" id=1]
 [ext_resource path="res://MagicDoor/MagicCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MagicDoor/Portal.gd" type="Script" id=3]
 [ext_resource path="res://MagicDoor/MagicDoor.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sfx/door_open.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sfx/door_closing.ogg" type="AudioStream" id=6]
 
 [sub_resource type="CubeMesh" id=2]
 material = ExtResource( 1 )
@@ -37,13 +39,14 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( 3.73213, 1 ),
 "update": 0,
 "values": [ Vector3( 0, -110, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=7]
 resource_name = "door_open"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -51,8 +54,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 2.63902, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -110, 0 ) ]
 }
@@ -77,6 +80,16 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="DoorAnchor/MagicDoorMesh/StaticBody"]
 shape = SubResource( 4 )
+
+[node name="DoorOpen" type="AudioStreamPlayer3D" parent="DoorAnchor/MagicDoorMesh"]
+transform = Transform( -0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, -1.00652, -1.75, -0.704769 )
+stream = ExtResource( 5 )
+bus = "Sfx"
+
+[node name="DoorClose" type="AudioStreamPlayer3D" parent="DoorAnchor/MagicDoorMesh"]
+transform = Transform( -0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, -1.00652, -1.75, -0.704769 )
+stream = ExtResource( 6 )
+bus = "Sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DoorAnchor"]
 anims/RESET = SubResource( 6 )
