@@ -18,6 +18,9 @@
 [node name="Game" type="Spatial"]
 script = ExtResource( 5 )
 
+[node name="Car" parent="." instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.23, 106 )
+
 [node name="Chair" parent="." instance=ExtResource( 14 )]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 43.4282, 0.05, 0 )
 
@@ -103,9 +106,6 @@ skeleton = NodePath("../..")
 
 [node name="Road" parent="Map" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247413, 101.788 )
-
-[node name="Car" parent="Map" instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.23, 106 )
 
 [node name="TinyWoods" type="Node" parent="."]
 

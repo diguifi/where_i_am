@@ -25,14 +25,6 @@ func play_correct_effect():
 	
 func play_wrong_effect():
 	wrong.play()
-	
-func play_effect(node_name):
-	var sfx_player = get_node(node_name)
-	sfx_player.play()
-	
-func stop_effect(node_name):
-	var sfx_player = get_node(node_name)
-	fade_out(sfx_player)
 		
 func stop_all_musics():
 	for music in music_keys:
@@ -46,21 +38,36 @@ func fade_out_all_musics():
 		if musicNode.playing:
 			fade_out(musicNode)
 
-func fade_in(stream_player):
+func fade_in(stream_player, duration = transition_duration):
 	var initial_db_value = stream_player.volume_db
 	stream_player.volume_db = -80
 	stream_player.play()
-	tween_in.interpolate_property(stream_player, "volume_db", -80, initial_db_value, transition_duration, transition_type, Tween.EASE_IN, 0)
+	tween_in.interpolate_property(stream_player, "volume_db", -80, initial_db_value, duration, transition_type, Tween.EASE_IN, 0)
 	tween_in.start()
 
-func fade_out(stream_player):
+func fade_out(stream_player, duration = transition_duration):
 	fade_out_original_db_value = stream_player.volume_db
-	tween_out.interpolate_property(stream_player, "volume_db", stream_player.volume_db, -80, transition_duration, transition_type, Tween.EASE_IN, 0)
+	tween_out.interpolate_property(stream_player, "volume_db", stream_player.volume_db, -80, duration, transition_type, Tween.EASE_IN, 0)
+	tween_out.start()
+	
+func fade_in_3d(stream_player, duration = transition_duration):
+	var initial_db_value = stream_player.unit_db
+	stream_player.unit_db = -80
+	stream_player.play()
+	tween_in.interpolate_property(stream_player, "unit_db", -80, initial_db_value, duration, transition_type, Tween.EASE_IN, 0)
+	tween_in.start()
+
+func fade_out_3d(stream_player, duration = transition_duration):
+	fade_out_original_db_value = stream_player.unit_db
+	tween_out.interpolate_property(stream_player, "unit_db", stream_player.unit_db, -80, duration, transition_type, Tween.EASE_IN, 0)
 	tween_out.start()
 
 func _on_TweenOut_tween_completed(object, _key):
 	object.stop()
-	object.volume_db = fade_out_original_db_value
+	if "volume_db" in object:
+		object.volume_db = fade_out_original_db_value
+	else:
+		object.unit_db = fade_out_original_db_value
 
 func _on_TweenIn_tween_completed(object, _key):
 	object.play()

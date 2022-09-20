@@ -1,11 +1,15 @@
 extends Spatial
 
-export var sfx_name = ""
+onready var sfx_player = $Sfx
+export(AudioStream) var stream
+
+func _ready():
+	sfx_player.stream = stream
 
 func _on_PropSoundManager_body_entered(body):
 	if body.is_in_group("player"):
-		MusicManager.play_effect(sfx_name)
+		MusicManager.fade_in_3d(sfx_player)
 
 func _on_PropSoundManager_body_exited(body):
 	if body.is_in_group("player"):
-		MusicManager.stop_effect(sfx_name)
+		MusicManager.fade_out_3d(sfx_player, 3)

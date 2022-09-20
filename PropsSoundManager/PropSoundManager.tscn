@@ -12,5 +12,9 @@ script = ExtResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 12 )
 
+[node name="Sfx" type="AudioStreamPlayer3D" parent="."]
+unit_db = -10.0
+bus = "Sfx"
+
 [connection signal="body_entered" from="." to="." method="_on_PropSoundManager_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_PropSoundManager_body_exited"]
