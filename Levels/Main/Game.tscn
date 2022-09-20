@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Main/Geometry/TinyWall.tscn" type="PackedScene" id=2]
@@ -12,9 +12,13 @@
 [ext_resource path="res://Levels/Main/Props/house1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Main/Geometry/Road.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/Main/Props/Car.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Main/Props/Slide.tscn" type="PackedScene" id=13]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 5 )
+
+[node name="Slide" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8297, 0, 0 )
 
 [node name="MagicDoor" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.65685 )
@@ -25,100 +29,187 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60658 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 95 )
 
-[node name="Trigger" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 85.7995 )
-trigger_place = 0
-music = "DefaultMusic"
+[node name="Map" type="Node" parent="."]
 
-[node name="Trigger2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.6884, 1.5, 46.6491 )
-trigger_event = 1
+[node name="Floor1" parent="Map" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, -19.4302 )
 
-[node name="Trigger3" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.1245, 1.5, 46.6491 )
-trigger_event = 1
-trigger_place = 2
-
-[node name="Woods" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2596, 0, 88.3386 )
-
-[node name="Woods2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.999923, 0, -0.012374, 0, 1, 0, 0.012374, 0, 0.999923, -15.1289, 0, 66.3775 )
-
-[node name="Woods9" parent="." instance=ExtResource( 9 )]
-transform = Transform( -0.998986, 0, 0.0450141, 0, 1, 0, -0.0450141, 0, -0.998986, 16.5278, 0, 63.5236 )
-
-[node name="Woods3" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.46759, 0, -0.883945, 0, 1, 0, 0.883945, 0, 0.46759, -32.6855, 0, 56.368 )
-
-[node name="Woods6" parent="." instance=ExtResource( 9 )]
-transform = Transform( -0.99998, 0, -0.00624827, 0, 1, 0, 0.00624827, 0, -0.99998, 23.0213, 0, 66.5665 )
-
-[node name="Woods7" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.0159518, 0, 0.999872, 0, 1, 0, -0.999872, 0, 0.0159518, 22.0056, 0, 88.5272 )
-
-[node name="Woods5" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.828207, 0, -0.560422, 0, 1, 0, 0.560422, 0, 0.828207, -52.7947, 0, 45.2411 )
-
-[node name="ArenaGeometry" type="Spatial" parent="."]
-
-[node name="Floor1" parent="ArenaGeometry" instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 20 )
-
-[node name="InvisibleWalls" type="Spatial" parent="ArenaGeometry"]
+[node name="InvisibleWalls" type="Spatial" parent="Map"]
 visible = false
 
-[node name="Wall1" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 3 )]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -60 )
+[node name="Wall1" parent="Map/InvisibleWalls" instance=ExtResource( 3 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -140 )
 skeleton = NodePath("../..")
 
-[node name="Wall2" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 3 )]
+[node name="Wall2" parent="Map/InvisibleWalls" instance=ExtResource( 3 )]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 100 )
 skeleton = NodePath("../..")
 
-[node name="Wall3" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 3 )]
-transform = Transform( -1.74846e-07, 0, 1, 0, 1, 0, -4, 0, -4.37114e-08, 78, 5.75, 20 )
+[node name="Wall3" parent="Map/InvisibleWalls" instance=ExtResource( 3 )]
+transform = Transform( -2.62268e-07, 0, 1, 0, 1, 0, -6, 0, -4.37114e-08, 78, 5.75, -20 )
 skeleton = NodePath("../..")
 
-[node name="Wall4" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 3 )]
-transform = Transform( -1.74846e-07, 0, 1, 0, 1, 0, -4, 0, -4.37114e-08, -78, 5.75, 20 )
+[node name="Wall4" parent="Map/InvisibleWalls" instance=ExtResource( 3 )]
+transform = Transform( -2.62268e-07, 0, 1, 0, 1, 0, -6, 0, -4.37114e-08, -78, 5.75, -20 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall6" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
+[node name="TinyWall6" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
 transform = Transform( -1.74846e-07, 0, 1, 0, 1, 0, -4, 0, -4.37114e-08, -6, 5.75, 76.272 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall7" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
+[node name="TinyWall7" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
 transform = Transform( -1.74846e-07, 0, 1, 0, 1, 0, -4, 0, -4.37114e-08, 6, 5.75, 76.272 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall9" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
+[node name="TinyWall9" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, 30.037, 5.75, 52 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall11" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
+[node name="TinyWall11" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
 transform = Transform( -1.56382, 0, -0.920409, 0, 1, 0, 3.68164, 0, -0.390956, 62.8151, 5.75, 29.9764 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall13" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
+[node name="TinyWall13" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
 transform = Transform( -1.74846e-07, 0, -1, 0, 1, 0, 4, 0, -4.37114e-08, 71.971, 5.75, -15.6361 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall10" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
+[node name="TinyWall10" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
 transform = Transform( 3.60706, 0, -0.432227, 0, 1, 0, 1.72891, 0, 0.901765, -27.5457, 5.75, 42.1502 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall12" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
-transform = Transform( -1.74846e-07, 0, -1, 0, 1, 0, 4, 0, -4.37114e-08, -49.3713, 5.75, 8.04887 )
+[node name="TinyWall12" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
+transform = Transform( 0.789603, 0, -0.980323, 0, 1, 0, 3.92129, 0, 0.197401, -53.9728, 5.75, 8.43247 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall14" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
-transform = Transform( -3.18675, 0, -0.60439, 0, 1, 0, 2.41756, 0, -0.796688, -30.3014, 5.75, -30.1188 )
+[node name="TinyWall14" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
+transform = Transform( -1.33572, 0, -0.974905, 0, 1, 0, 5.84943, 0, -0.222621, -50.669, 5.75, -49.5067 )
 skeleton = NodePath("../..")
 
-[node name="TinyWall15" parent="ArenaGeometry/InvisibleWalls" instance=ExtResource( 2 )]
-transform = Transform( 6.98885, 0, -0.0564314, 0, 1, 0, 0.39502, 0, 0.998406, 29.9314, 5.75, -42.1331 )
+[node name="TinyWall16" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
+transform = Transform( -2.01147, 0, -0.741917, 0, 1, 0, 2.22575, 0, -0.670491, -30.6823, 5.75, -97.5181 )
 skeleton = NodePath("../..")
+
+[node name="TinyWall17" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
+transform = Transform( -6.91977, 0, -0.150968, 0, 1, 0, 1.05677, 0, -0.988539, 19.425, 5.75, -116.371 )
+skeleton = NodePath("../..")
+
+[node name="TinyWall15" parent="Map/InvisibleWalls" instance=ExtResource( 2 )]
+transform = Transform( 1.08816, 0, -0.987843, 0, 1, 0, 6.91491, 0, 0.155452, 65.6209, 5.75, -81.163 )
+skeleton = NodePath("../..")
+
+[node name="Road" parent="Map" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247413, 101.788 )
+
+[node name="Car" parent="Map" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.23, 106 )
+
+[node name="TinyWoods" type="Node" parent="."]
+
+[node name="Woods" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2596, 0, 88.3386 )
+
+[node name="Woods2" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.999923, 0, -0.012374, 0, 1, 0, 0.012374, 0, 0.999923, -15.1289, 0, 66.3775 )
+
+[node name="Woods9" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.998986, 0, 0.0450141, 0, 1, 0, -0.0450141, 0, -0.998986, 16.5278, 0, 63.5236 )
+
+[node name="Woods3" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.46759, 0, -0.883945, 0, 1, 0, 0.883945, 0, 0.46759, -32.6855, 0, 56.368 )
+
+[node name="Woods6" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.99998, 0, -0.00624827, 0, 1, 0, 0.00624827, 0, -0.99998, 23.0213, 0, 66.5665 )
+
+[node name="Woods7" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.0159518, 0, 0.999872, 0, 1, 0, -0.999872, 0, 0.0159518, 22.0056, 0, 88.5272 )
+
+[node name="Woods5" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.828207, 0, -0.560422, 0, 1, 0, 0.560422, 0, 0.828207, -52.7947, 0, 45.2411 )
+
+[node name="Woods8" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.191511, 0, -0.98149, 0, 1, 0, 0.98149, 0, 0.191511, -65.3366, 0, 22.0656 )
+
+[node name="Woods10" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.925547, 0, 0.378632, 0, 1, 0, -0.378632, 0, 0.925547, -65.3366, 0, -0.144361 )
+
+[node name="Woods11" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.983988, 0, -0.178236, 0, 1, 0, 0.178236, 0, 0.983988, -65.2447, 0, -22.3727 )
+
+[node name="Woods12" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.194474, 0, -0.980907, 0, 1, 0, 0.980907, 0, -0.194474, -65.699, 0, -44.1951 )
+
+[node name="Woods13" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.978281, 0, -0.20728, 0, 1, 0, 0.20728, 0, 0.978281, -56.4921, 0, -62.13 )
+
+[node name="Woods14" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.309963, 0, -0.950748, 0, 1, 0, 0.950748, 0, -0.309963, -56.4855, 0, -84.626 )
+
+[node name="Woods15" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.33532, 0, 0.942104, 0, 1, 0, -0.942104, 0, -0.33532, -38.2828, 0, -103.636 )
+
+[node name="Woods16" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.713519, 0, -0.700635, 0, 1, 0, 0.700635, 0, 0.713519, -22.9364, 0, -116.702 )
+
+[node name="Woods17" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.187381, 0, -0.982287, 0, 1, 0, 0.982287, 0, 0.187381, -1.65729, 0, -121.436 )
+
+[node name="Woods18" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.187381, 0, -0.982287, 0, 1, 0, 0.982287, 0, 0.187381, 15.399, 0, -124.8 )
+
+[node name="Woods19" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.995563, 0, 0.094091, 0, 1, 0, -0.094091, 0, 0.995563, 34.4831, 0, -128.679 )
+
+[node name="Woods20" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.156624, 0, 0.987658, 0, 1, 0, -0.987658, 0, 0.156624, 54.8999, 0, -132.077 )
+
+[node name="Woods21" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.223539, 0, 0.974694, 0, 1, 0, -0.974694, 0, -0.223539, 73.8649, 0, -115.148 )
+
+[node name="Woods22" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.992106, 0, -0.125403, 0, 1, 0, 0.125403, 0, -0.992106, 72.314, 0, -92.3744 )
+
+[node name="Woods23" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.968652, 0, -0.248419, 0, 1, 0, 0.248419, 0, -0.968652, 75.3378, 0, -75.0526 )
+
+[node name="Woods24" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.647974, 0, -0.761662, 0, 1, 0, 0.761662, 0, 0.647974, 78.9118, 0, -52.7239 )
+
+[node name="Woods25" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.78115, 0, 0.624343, 0, 1, 0, -0.624343, 0, 0.78115, 84.2061, 0, -26.1218 )
+
+[node name="Woods26" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.26739, 0, 0.963588, 0, 1, 0, -0.963588, 0, -0.26739, 85.7387, 0, -2.48018 )
+
+[node name="Woods27" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.935283, 0, 0.353899, 0, 1, 0, -0.353899, 0, -0.935283, 75.8128, 0, 21.2543 )
+
+[node name="Woods28" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.935283, 0, 0.353899, 0, 1, 0, -0.353899, 0, -0.935283, 66.8699, 0, 41.0897 )
+
+[node name="Woods29" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( -0.390088, 0, 0.920777, 0, 1, 0, -0.920777, 0, -0.390088, 55.3959, 0, 59.7414 )
+
+[node name="Woods30" parent="TinyWoods" instance=ExtResource( 9 )]
+transform = Transform( 0.999684, 0, -0.02513, 0, 1, 0, 0.02513, 0, 0.999684, 33.5392, 0, 66.2509 )
+
+[node name="Triggers" type="Node" parent="."]
+
+[node name="Trigger" parent="Triggers" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 85.7995 )
+skeleton = NodePath("../..")
+trigger_place = 0
+music = "DefaultMusic"
+
+[node name="Trigger2" parent="Triggers" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -7.6884, 1.5, 46.6491 )
+skeleton = NodePath("../..")
+trigger_event = 1
+
+[node name="Trigger3" parent="Triggers" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.1245, 1.5, 46.6491 )
+skeleton = NodePath("../..")
+trigger_event = 1
+trigger_place = 2
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -133,8 +224,11 @@ shadow_enabled = true
 shadow_color = Color( 0.627451, 0.627451, 0.627451, 1 )
 directional_shadow_max_distance = 250.0
 
-[node name="Road" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247413, 101.788 )
-
-[node name="Car" parent="." instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.23, 106 )
+[node name="DirectionalLight2" type="DirectionalLight" parent="Lighting"]
+transform = Transform( -0.866026, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 55.715, 0 )
+visible = false
+light_energy = 3.0
+light_indirect_energy = 0.5
+shadow_enabled = true
+shadow_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+directional_shadow_max_distance = 250.0

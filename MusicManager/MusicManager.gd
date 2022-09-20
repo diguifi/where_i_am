@@ -2,6 +2,7 @@ extends Node
 
 onready var correct = $SfxCorrect
 onready var wrong = $SfxWrong
+onready var kids = $SfxKids
 onready var tween_in = $TweenIn
 onready var tween_out = $TweenOut
 var transition_duration = 1.00
@@ -24,6 +25,12 @@ func play_correct_effect():
 	
 func play_wrong_effect():
 	wrong.play()
+	
+func play_kids_effect():
+	kids.play()
+	
+func stop_kids_effect():
+	fade_out(kids)
 		
 func stop_all_musics():
 	for music in music_keys:

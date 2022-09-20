@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kid_laughing.ogg-0253f82a3f097fce599398544989a2dc.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sfx/kid_laughing.ogg"
+dest_files=[ "res://.import/kid_laughing.ogg-0253f82a3f097fce599398544989a2dc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
