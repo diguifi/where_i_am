@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Main/Geometry/TinyWall.tscn" type="PackedScene" id=2]
@@ -23,9 +23,25 @@
 [ext_resource path="res://Levels/Main/Props/Tree_2.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Levels/Main/Props/Tree_3.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Levels/Main/Props/Tree_4.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Levels/Main/Props/Piece.tscn" type="PackedScene" id=24]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 5 )
+
+[node name="Piece" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.7984, 0, -108.806 )
+
+[node name="Piece2" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.1179, 0, 13.3053 )
+
+[node name="Piece3" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 87.3057, 0, -19.0798 )
+
+[node name="Piece4" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19215, 0, 11.9869 )
+
+[node name="Piece5" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9661, 1.93967, -100.101 )
 
 [node name="Car" parent="." instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.23, 106 )
@@ -37,7 +53,7 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 37.3104, 0.05, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7983, 0, -100.12 )
 
 [node name="Cart" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.0367, 0, -62.6651 )
+transform = Transform( -0.661011, 0, 0.750377, 0, 1, 0, -0.750377, 0, -0.661011, 71.0367, 0, -62.6651 )
 
 [node name="MagicDoor" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.606 )
@@ -712,6 +728,9 @@ transform = Transform( 0.816797, 0, 0.576925, 0, 1, 0, -0.576925, 0, 0.816797, 9
 
 [node name="Tree_14" parent="TinyWoods" instance=ExtResource( 17 )]
 transform = Transform( 0.816797, 0, 0.576925, 0, 1, 0, -0.576925, 0, 0.816797, 17.1383, 0.043, -22.6345 )
+
+[node name="Tree_15" parent="TinyWoods" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.209, 0.35, -51.6374 )
 
 [node name="Triggers" type="Node" parent="."]
 

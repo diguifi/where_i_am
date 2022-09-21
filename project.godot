@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Where I am"
-run/main_scene="res://Levels/Main/Game.tscn"
+run/main_scene="res://Levels/Start/StartScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -36,7 +36,7 @@ MusicManager="*res://MusicManager/MusicManager.tscn"
 window/size/width=381
 window/size/height=224
 window/size/test_width=1024
-window/size/test_height=600
+window/size/test_height=640
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

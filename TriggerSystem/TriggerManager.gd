@@ -2,6 +2,7 @@ extends Node
 
 var correct_order = [Globals.place.SLIDE, Globals.place.CART, Globals.place.CHAIR]
 var last_place = Globals.place.NONE
+var last_wrong_place = Globals.place.NONE
 
 func _ready():
 	Signals.connect("trigger_event", self, "_trigger_received")
@@ -20,7 +21,9 @@ func _trigger_received(event, place, music):
 					MusicManager.play_correct_effect()
 				Signals.emit_signal("clear_triggers_of_place", place)
 			else:
-				MusicManager.play_wrong_effect()
+				if last_wrong_place != place:
+					last_wrong_place = place
+					MusicManager.play_wrong_effect()
 
 func is_in_correct_order(place):
 	if last_place == Globals.place.NONE and place == correct_order[0]:
