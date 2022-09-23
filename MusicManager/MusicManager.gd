@@ -2,12 +2,13 @@ extends Node
 
 onready var correct = $SfxCorrect
 onready var wrong = $SfxWrong
+onready var pieces = $SfxPieces
 onready var tween_in = $TweenIn
 onready var tween_out = $TweenOut
 var transition_duration = 1.00
 var transition_type = 1
 var currently_playing = ""
-var music_keys = ['DefaultMusic', 'FinishMusic']
+var music_keys = ['DefaultMusic', 'Path1', 'Path2', 'Path3', 'FinishMusic']
 var fade_out_original_db_value = 0
 
 func change_music(new_music, with_fade = true, force_play = false):
@@ -25,6 +26,9 @@ func play_correct_effect():
 	
 func play_wrong_effect():
 	wrong.play()
+	
+func play_pieces_effect():
+	pieces.play()
 		
 func stop_all_musics():
 	for music in music_keys:

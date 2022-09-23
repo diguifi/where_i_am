@@ -32,7 +32,7 @@ script = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.7984, 0, -108.806 )
 
 [node name="Piece2" parent="." instance=ExtResource( 24 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.1179, 0, 13.3053 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.2374, 0, 12.1457 )
 
 [node name="Piece3" parent="." instance=ExtResource( 24 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 87.3057, 0, -19.0798 )
@@ -769,6 +769,21 @@ transform = Transform( 0.939396, -0.779611, 3.40779e-08, 0, -4.37114e-08, -1, 1.
 skeleton = NodePath("../..")
 trigger_event = 1
 trigger_place = 1
+
+[node name="Path1Music" parent="Triggers" instance=ExtResource( 7 )]
+transform = Transform( 1.45137, 0.252576, -1.10405e-08, 0, -4.37114e-08, -1, -0.378863, 0.967577, -4.22942e-08, -49.2774, 1.5, 23.1408 )
+skeleton = NodePath("../..")
+music = "Path1"
+
+[node name="Path2Music" parent="Triggers" instance=ExtResource( 7 )]
+transform = Transform( 0.228989, 0.988279, -4.31991e-08, 0, -4.37114e-08, -1, -1.48242, 0.152658, -6.67287e-09, 13.9314, 1.5, -85.4441 )
+skeleton = NodePath("../..")
+music = "Path2"
+
+[node name="Path3Music" parent="Triggers" instance=ExtResource( 7 )]
+transform = Transform( 0.466761, -0.950353, 4.15413e-08, 0, -4.37114e-08, -1, 1.42553, 0.311175, -1.36019e-08, 45.0792, 1.5, -25.6419 )
+skeleton = NodePath("../..")
+music = "Path3"
 
 [node name="Lighting" type="Node" parent="."]
 

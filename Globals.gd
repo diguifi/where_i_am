@@ -33,6 +33,9 @@ func get_piece():
 	if pieces >= total_pieces:
 		end = 2
 		env_node = get_node('/root/Game/Lighting/WorldEnvironment').get_environment()
+		MusicManager.play_pieces_effect()
+	else:
+		Signals.emit_signal("got_piece")
 
 func reset():
 	end = 1
