@@ -17,13 +17,20 @@ onready var floor_max_angle: float = deg2rad(45.0)
 onready var gravity = (ProjectSettings.get_setting("physics/3d/default_gravity") * gravity_multiplier)
 
 func _physics_process(delta):
-	check_movement_inputs(delta)
-	
-
-func check_movement_inputs(delta):
+	if !Globals.is_mobile:
+		check_pc_movement_inputs(delta)
+	else:
+		check_movement_inputs(delta)
+		
+func check_pc_movement_inputs(delta):
 	input_axis = Input.get_vector("move_back", "move_forward",
 			"move_left", "move_right")
+	check_movement_inputs(delta)
 	
+func _on_MobileJoystick_mobile_input(move_vector):
+	input_axis = Vector2(move_vector.y * -1, move_vector.x)
+
+func check_movement_inputs(delta):
 	check_direction_inputs()
 	
 	if is_on_floor():

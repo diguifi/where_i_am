@@ -17,6 +17,7 @@ func _trigger_received(event, place, music):
 					Signals.emit_signal("final_place_reached")
 					MusicManager.play_correct_effect()
 					MusicManager.change_music('FinishMusic')
+					Globals.set_end(1)
 				else:
 					MusicManager.play_correct_effect()
 				Signals.emit_signal("clear_triggers_of_place", place)
