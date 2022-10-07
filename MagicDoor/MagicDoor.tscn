@@ -104,7 +104,7 @@ texture = SubResource( 5 )
 script = ExtResource( 3 )
 
 [node name="Area" type="Area" parent="Portal"]
-transform = Transform( 0.6, 0, 0, 0, 1.4, 0, 0, 0, 0.01, 0, 0, -0.099592 )
+transform = Transform( 0.6, 0, 0, 0, 1.4, 0, 0, 0, 0.01, 0, 0, -0.5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Portal/Area"]
 shape = SubResource( 9 )

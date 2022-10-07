@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/MovementController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Head.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Sprint.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Sfx/sprinting.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sfx/walking.mp3" type="AudioStream" id=5]
+[ext_resource path="res://MobileJoystick/MobileJoystick.tscn" type="PackedScene" id=6]
 
 [node name="Player" groups=["player"] instance=ExtResource( 1 )]
 speed = 5
@@ -28,3 +29,8 @@ bus = "Sfx"
 stream = ExtResource( 4 )
 volume_db = -18.0
 bus = "Sfx"
+
+[node name="MobileJoystick" parent="." index="3" instance=ExtResource( 6 )]
+
+[connection signal="mobile_input" from="MobileJoystick" to="." method="_on_MobileJoystick_mobile_input"]
+[connection signal="mobile_rotation" from="MobileJoystick" to="Head" method="_on_MobileJoystick_mobile_rotation"]

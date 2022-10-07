@@ -12,13 +12,17 @@ var rot := Vector3()
 func _ready():
 	if get_node('/root/Game/Lighting/WorldEnvironment').get_environment().fog_enabled:
 		fog.visible = true
-	mouse_sensitivity = mouse_sensitivity / 1000
+	if Globals.is_mobile:
+		mouse_sensitivity = mouse_sensitivity / 200
+	else:
+		mouse_sensitivity = mouse_sensitivity / 1000
 	y_limit = deg2rad(y_limit)
 
 func _input(event: InputEvent):
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		mouse_axis = event.relative
-		camera_rotation()
+	if !Globals.is_mobile:
+		if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			mouse_axis = event.relative
+			camera_rotation()
 
 func camera_rotation():
 	rot.y -= mouse_axis.x * mouse_sensitivity
@@ -26,3 +30,9 @@ func camera_rotation():
 	
 	get_owner().rotation.y = rot.y
 	rotation.x = rot.x
+
+
+func _on_MobileJoystick_mobile_rotation(relative):
+	mouse_axis = relative
+	if mouse_axis.x < 30 and mouse_axis.x > -30:
+		camera_rotation()
